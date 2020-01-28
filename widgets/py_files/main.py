@@ -43,7 +43,10 @@ class Ui_MainWindow(object):
         self.action_about.setObjectName("action_about")
         self.action_new = QtWidgets.QAction(MainWindow)
         self.action_new.setObjectName("action_new")
+        self.action_open = QtWidgets.QAction(MainWindow)
+        self.action_open.setObjectName("action_open")
         self.menuFile.addAction(self.action_new)
+        self.menuFile.addAction(self.action_open)
         self.menuHelp.addAction(self.action_about)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
@@ -58,6 +61,7 @@ class Ui_MainWindow(object):
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.action_about.setText(_translate("MainWindow", "About"))
         self.action_new.setText(_translate("MainWindow", "New"))
+        self.action_open.setText(_translate("MainWindow", "Open"))
 import resources_rc
 
 

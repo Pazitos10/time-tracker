@@ -15,7 +15,7 @@ class ProjectsTab(QtWidgets.QWidget):
         self.parent = parent
         self.ui = Ui_widget_projects_tab()
         self.ui.setupUi(self)
-        self.state = State('data.json')
+        self.state = State(self.parent.data_path)
         self.state.add_listener(self)
         self.ui.push_btn_new_project.clicked.connect(lambda: NewProject().exec())
 
@@ -29,10 +29,10 @@ class ProjectsTab(QtWidgets.QWidget):
         return widget
 
     def open_edit_project_dialog(self, project_name):
-        NewProject(edit_mode=True, project_name=project_name).exec()
+        NewProject(parent=self.parent, edit_mode=True, project_name=project_name).exec()
 
     def open_remove_project_dialog(self, project_name):
-        RemoveProject(project_name).exec()
+        RemoveProject(parent=self.parent, project_name=project_name).exec()
 
     def add_item_to_list(self, project_name):
         list_item_widget = self.get_list_item_widget(project_name)
@@ -48,6 +48,8 @@ class ProjectsTab(QtWidgets.QWidget):
         for idx, project_name in enumerate(project_names):
             self.add_item_to_list(project_name)
 
+    def update_data_path(self, data_path):
+        self.state.update_data_path(data_path)
+
     def tab_changed(self):
-        print("hola desde projects tab!")
-        #pass
+        pass

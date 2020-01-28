@@ -5,12 +5,13 @@ from state import State
 
 class RemoveProject(QtWidgets.QDialog):
 
-    def __init__(self, project_name=None):
+    def __init__(self, parent=None, project_name=None):
         super(RemoveProject, self).__init__()
+        self.parent = parent
         self.ui = Ui_dialog_remove_project()
         self.ui.setupUi(self)
         self.project_name = project_name
-        self.state = State('data.json')
+        self.state = State(self.parent.data_path)
         self.setups()
 
     def setups(self):

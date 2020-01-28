@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_widget_projects_tab(object):
     def setupUi(self, widget_projects_tab):
         widget_projects_tab.setObjectName("widget_projects_tab")
-        widget_projects_tab.resize(662, 392)
+        widget_projects_tab.resize(662, 356)
         self.verticalLayout = QtWidgets.QVBoxLayout(widget_projects_tab)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()

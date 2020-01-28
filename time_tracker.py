@@ -88,14 +88,18 @@ def sum_deltas(deltas):
     return reduce(lambda d1, d2: d1+d2, deltas, initial)
 
 def get_report(data, project_name):
-    total = calculate_total(data, project_name)
-    if total:
-        print(f"Time spent working on project: '{project_name}'")
-        print(total.get('completed_sessions'))
-        print(f"Ongoing sessions: {total['ongoing_sessions']}")
-        print(f"Time spent in ongoing session: {total['ongoing_delta']}")
+    if len(data.get("projects")) > 0:
+        print(f"project {project_name}")
+        total = calculate_total(data, project_name)
+        if total:
+            print(f"Time spent working on project: '{project_name}'")
+            print(total.get('completed_sessions'))
+            print(f"Ongoing sessions: {total['ongoing_sessions']}")
+            print(f"Time spent in ongoing session: {total['ongoing_delta']}")
+        else:
+            print(f"Project '{project_name}' was not found in data file")
     else:
-        print(f"Project '{project_name}' was not found in data file")
+        print(f"There are no projects in this data file")
 
 def calculate_total(data, project_name):
     projects = data.get("projects")

@@ -12,6 +12,11 @@ class State(QObject):
             self.data = load_data(data_path)
             self.listeners = []
 
+        def update_data_path(self, data_path):
+            self.data_path = data_path
+            self.data = load_data(data_path)
+            self.notify_update()
+
         def add_listener(self, listener):
             self.listeners.append(listener)
             self.notify_update()
@@ -88,7 +93,7 @@ class State(QObject):
                 l.update_data(self.data)
 
     instance = None
-    def __init__(self, data_path):
+    def __init__(self, data_path=None):
         if not State.instance:
             State.instance = State.__State(data_path)
         else:

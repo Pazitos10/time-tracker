@@ -50,6 +50,7 @@
      <string>File</string>
     </property>
     <addaction name="action_new"/>
+    <addaction name="action_open"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -68,6 +69,11 @@
   <action name="action_new">
    <property name="text">
     <string>New</string>
+   </property>
+  </action>
+  <action name="action_open">
+   <property name="text">
+    <string>Open</string>
    </property>
   </action>
  </widget>

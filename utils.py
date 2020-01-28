@@ -1,3 +1,5 @@
+import os
+import json
 from PyQt5 import QtWidgets
 
 def open_dialog(ui_dialog):
@@ -5,6 +7,21 @@ def open_dialog(ui_dialog):
     dialog.ui = ui_dialog()
     dialog.ui.setupUi(dialog)
     dialog.exec()
+
+def get_data_path():
+    path = "settings.json"
+    if os.path.exists(path):
+        f = open(path, "r")
+        settings = json.loads(f.read())
+        f.close()
+        return settings.get("data_path") 
+    else:
+        return "./data.json"
+
+def set_data_path(path):
+    settings = {"data_path": path}
+    with open("settings.json", "w+") as f:
+        json.dump(settings, f)
 
 def format_timestamp(timestamp):
     if "," in timestamp:

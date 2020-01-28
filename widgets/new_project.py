@@ -5,13 +5,14 @@ from state import State
 
 class NewProject(QtWidgets.QDialog):
 
-    def __init__(self, edit_mode=False, project_name=None):
+    def __init__(self, parent=None, edit_mode=False, project_name=None):
         super(NewProject, self).__init__()
+        self.parent = parent
         self.ui = Ui_dialog_new_project()
         self.ui.setupUi(self)
         self.edit_mode = edit_mode
         self.project_name = project_name
-        self.state = State('data.json')
+        self.state = State(self.parent.data_path)
         self.setups()
 
     def setups(self):
