@@ -13,15 +13,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_widget_projects_tab(object):
     def setupUi(self, widget_projects_tab):
         widget_projects_tab.setObjectName("widget_projects_tab")
-        widget_projects_tab.resize(533, 241)
+        widget_projects_tab.resize(662, 392)
         self.verticalLayout = QtWidgets.QVBoxLayout(widget_projects_tab)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.select_all_checkbox = QtWidgets.QCheckBox(widget_projects_tab)
-        self.select_all_checkbox.setMaximumSize(QtCore.QSize(16777200, 16777215))
-        self.select_all_checkbox.setObjectName("select_all_checkbox")
-        self.horizontalLayout.addWidget(self.select_all_checkbox)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.push_btn_new_project = QtWidgets.QPushButton(widget_projects_tab)
@@ -39,7 +35,6 @@ class Ui_widget_projects_tab(object):
     def retranslateUi(self, widget_projects_tab):
         _translate = QtCore.QCoreApplication.translate
         widget_projects_tab.setWindowTitle(_translate("widget_projects_tab", "widget_projects_tab"))
-        self.select_all_checkbox.setText(_translate("widget_projects_tab", "Select all"))
         self.push_btn_new_project.setText(_translate("widget_projects_tab", "New"))
 
 

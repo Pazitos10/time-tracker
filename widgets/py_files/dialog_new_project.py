@@ -44,7 +44,7 @@ class Ui_dialog_new_project(object):
 
     def retranslateUi(self, dialog_new_project):
         _translate = QtCore.QCoreApplication.translate
-        dialog_new_project.setWindowTitle(_translate("dialog_new_project", "New/Edit Project"))
+        dialog_new_project.setWindowTitle(_translate("dialog_new_project", "New Project"))
         self.label.setText(_translate("dialog_new_project", "Project name:"))
 
 

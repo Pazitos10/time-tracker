@@ -89,15 +89,20 @@ def sum_deltas(deltas):
 
 def get_report(data, project_name):
     total = calculate_total(data, project_name)
-    print(f"Time spent working on project: '{project_name}'")
-    print(f"{total['completed_sessions']}")
-    print(f"Ongoing sessions: {total['ongoing_sessions']}")
-    print(f"Time spent in ongoing session: {total['ongoing_delta']}")
+    if total:
+        print(f"Time spent working on project: '{project_name}'")
+        print(total.get('completed_sessions'))
+        print(f"Ongoing sessions: {total['ongoing_sessions']}")
+        print(f"Time spent in ongoing session: {total['ongoing_delta']}")
+    else:
+        print(f"Project '{project_name}' was not found in data file")
 
 def calculate_total(data, project_name):
     projects = data.get("projects")
+    project_found = False
     for i, p in enumerate(projects):
         if p.get("project_name") == project_name:
+            project_found = True
             proj = data.get("projects")[i]
             deltas = []
             ongoing = False
@@ -117,8 +122,8 @@ def calculate_total(data, project_name):
                 'ongoing_sessions': ongoing,
                 'ongoing_delta': ongoing_delta
             }
-        else:
-            print("Project '{project_name}' was not found in data file")
+    if not project_found:
+        return None
 
 if __name__ == '__main__':
   main()

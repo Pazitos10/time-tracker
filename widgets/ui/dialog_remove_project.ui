@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>dialog_remove</class>
- <widget class="QDialog" name="dialog_remove">
+ <class>dialog_remove_project</class>
+ <widget class="QDialog" name="dialog_remove_project">
   <property name="windowModality">
    <enum>Qt::WindowModal</enum>
   </property>
@@ -81,7 +81,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>dialog_remove</receiver>
+   <receiver>dialog_remove_project</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -97,7 +97,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>dialog_remove</receiver>
+   <receiver>dialog_remove_project</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

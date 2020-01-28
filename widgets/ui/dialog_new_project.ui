@@ -20,7 +20,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>New/Edit Project</string>
+   <string>New Project</string>
   </property>
   <property name="modal">
    <bool>true</bool>
