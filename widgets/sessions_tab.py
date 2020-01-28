@@ -11,6 +11,7 @@ class SessionsTab(QtWidgets.QWidget):
         self.ui = Ui_widget_sessions_tab()
         self.ui.setupUi(self)
         self.state = State(self.parent.data_path)
+        self.state.add_listener(self)
         self.setups()
 
     def setups(self):
@@ -71,4 +72,7 @@ class SessionsTab(QtWidgets.QWidget):
 
     def update_data_path(self, data_path):
         self.state.update_data_path(data_path)
+        self.update_projects_combo_box()
+
+    def update_data(self, data):
         self.update_projects_combo_box()

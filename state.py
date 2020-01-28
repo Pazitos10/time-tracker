@@ -13,11 +13,13 @@ class State(QObject):
             self.listeners = []
 
         def update_data_path(self, data_path):
+            #Update data path and notify listeners
             self.data_path = data_path
             self.data = load_data(data_path)
             self.notify_update()
 
         def add_listener(self, listener):
+            #Adds a new listener and triggers an update.
             self.listeners.append(listener)
             self.notify_update()
 
@@ -31,7 +33,7 @@ class State(QObject):
             #To edit a project
             idx = get_project_index(self.data, old_name)
             if idx >= 0:
-                project_data = self.data["projects"][idx]
+                project_data = self.data.get("projects")[idx]
                 project_data.update({"project_name": new_name})
                 self.data.get("projects").pop(idx)
                 self.data.get("projects").insert(idx, project_data)
@@ -83,10 +85,6 @@ class State(QObject):
             self.data = update_project(p, self.data)
             save_data(self.data, self.data_path)
             self.notify_update()
-
-        def clean(self):
-            #To remove all projects
-            pass
 
         def notify_update(self):
             for l in self.listeners:

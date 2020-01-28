@@ -29,10 +29,10 @@ class ProjectsTab(QtWidgets.QWidget):
         return widget
 
     def open_edit_project_dialog(self, project_name):
-        NewProject(parent=self.parent, edit_mode=True, project_name=project_name).exec()
+        NewProject(data_path=self.parent.data_path, edit_mode=True, project_name=project_name).exec()
 
     def open_remove_project_dialog(self, project_name):
-        RemoveProject(parent=self.parent, project_name=project_name).exec()
+        RemoveProject(data_path=self.parent.data_path, project_name=project_name).exec()
 
     def add_item_to_list(self, project_name):
         list_item_widget = self.get_list_item_widget(project_name)
@@ -42,7 +42,6 @@ class ProjectsTab(QtWidgets.QWidget):
         self.ui.projects_list_widget.setItemWidget(item, list_item_widget)
 
     def update_data(self, data):
-        self.data = data
         self.ui.projects_list_widget.clear() #vaciamos la lista
         project_names = self.state.get_project_names()
         for idx, project_name in enumerate(project_names):
