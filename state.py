@@ -48,6 +48,7 @@ class State(QObject):
                 save_data(self.data, self.data_path)
                 self.notify_update()
 
+        ## Move to time-tracker
         def are_there_ongoing_sessions(self, project_name):
             # Returns True if is there an ongoing working session for a given project. 
             # Otherwise, returns False.
@@ -77,7 +78,8 @@ class State(QObject):
         def get_total_timedelta(self, project_name):
             total = calculate_total(self.data, project_name)
             return total.get("completed_sessions")
-
+        ## 
+            
         def add_timestamp(self, project_name):
             #To add a timestamp (start/end) to the last working session of a project 
             p = get_project(project_name, self.data)
@@ -91,11 +93,11 @@ class State(QObject):
                 l.update_data(self.data)
 
     instance = None
-    def __init__(self, data_path=None):
+    def __init__(self, data_path):
         if not State.instance:
             State.instance = State.__State(data_path)
-        else:
-            State.instance.data_path = data_path
+        #else:
+        #    State.instance.update_data_path(data_path)
 
     def __getattr__(self, name):
         return getattr(self.instance, name)

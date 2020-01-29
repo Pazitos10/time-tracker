@@ -8,6 +8,7 @@ class SessionsTab(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(SessionsTab, self).__init__(parent)
         self.parent = parent
+        self.current_index = 0
         self.ui = Ui_widget_sessions_tab()
         self.ui.setupUi(self)
         self.state = State(self.parent.data_path)
@@ -24,6 +25,7 @@ class SessionsTab(QtWidgets.QWidget):
         self.ui.projects_combo_box.clear()
         project_names = self.state.get_project_names()
         self.ui.projects_combo_box.addItems(project_names)
+        self.ui.projects_combo_box.setCurrentIndex(self.current_index)
 
     def toggle_btn_title(self):
         project_name = self.ui.projects_combo_box.currentText()
@@ -34,6 +36,7 @@ class SessionsTab(QtWidgets.QWidget):
 
     def start_stop_session(self):
         project_name = self.ui.projects_combo_box.currentText()
+        self.current_index = self.ui.projects_combo_box.currentIndex()
         self.state.add_timestamp(project_name)
         self.toggle_btn_title()
         self.set_last_session_timedelta()
