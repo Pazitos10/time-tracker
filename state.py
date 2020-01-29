@@ -27,6 +27,7 @@ class State(QObject):
             #To add a new project
             self.data = create_project(project_name, self.data)
             #TODO: when creating project, save_data is done automatically
+            save_data(self.data, self.data_path)
             self.notify_update()
 
         def update_project(self, old_name, new_name):
