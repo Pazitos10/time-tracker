@@ -1,6 +1,5 @@
 import os
 import json
-
 from PyQt5 import QtWidgets
 from widgets.py_files.widget_projects_tab import Ui_widget_projects_tab
 from widgets.py_files.list_item_widget import Ui_list_item_widget
@@ -20,6 +19,7 @@ class ProjectsTab(QtWidgets.QWidget):
         self.ui.push_btn_new_project.clicked.connect(lambda: NewProject().exec())
 
     def get_list_item_widget(self, project_name):
+        # Returns a list item widget of a specific project. 
         widget = QtWidgets.QWidget()
         ui = Ui_list_item_widget()
         ui.setupUi(widget)
@@ -29,12 +29,15 @@ class ProjectsTab(QtWidgets.QWidget):
         return widget
 
     def open_edit_project_dialog(self, project_name):
+        # Displays a QDialog to create/edit a new project.
         NewProject(data_path=self.parent.data_path, edit_mode=True, project_name=project_name).exec()
 
     def open_remove_project_dialog(self, project_name):
+        # Displays a QDialog to remove a project.
         RemoveProject(data_path=self.parent.data_path, project_name=project_name).exec()
 
     def add_item_to_list(self, project_name):
+        # Adds a list item widget with a new project data.
         list_item_widget = self.get_list_item_widget(project_name)
         item = QtWidgets.QListWidgetItem()
         item.setSizeHint(list_item_widget.sizeHint())
@@ -42,7 +45,8 @@ class ProjectsTab(QtWidgets.QWidget):
         self.ui.projects_list_widget.setItemWidget(item, list_item_widget)
 
     def update_data(self, data):
-        self.ui.projects_list_widget.clear() #vaciamos la lista
+        # Triggers a UI refresh with new/updated data
+        self.ui.projects_list_widget.clear()
         project_names = self.state.get_project_names()
         for idx, project_name in enumerate(project_names):
             self.add_item_to_list(project_name)
@@ -51,4 +55,5 @@ class ProjectsTab(QtWidgets.QWidget):
         self.state.update_data_path(data_path)
 
     def tab_changed(self):
+        # Executed when the user switch tabs en the main widget.
         pass

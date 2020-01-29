@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets
 from widgets.py_files.dialog_remove_project import Ui_dialog_remove_project
-from utils import get_project_index
 from state import State
 
 class RemoveProject(QtWidgets.QDialog):

@@ -7,7 +7,6 @@ from widgets.py_files.dialog_create_data_file import Ui_dialog_create_data_file
 from widgets.py_files.dialog_about import Ui_dialog_about
 from widgets.dialog_create_data_file import DialogCreateDataFile
 from utils import open_dialog, get_data_path, set_data_path
-from time_tracker_cli import load_data
 from state import State
 
 class App(QtWidgets.QMainWindow):

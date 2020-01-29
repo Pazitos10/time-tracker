@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets
 from widgets.py_files.dialog_new_project import Ui_dialog_new_project
-from utils import get_project_index
 from state import State
 
 class NewProject(QtWidgets.QDialog):
@@ -15,6 +14,7 @@ class NewProject(QtWidgets.QDialog):
         self.setups()
 
     def setups(self):
+        # Setup UI
         if self.edit_mode and self.project_name:
             self.setWindowTitle("Edit project")
             self.ui.lineEdit.setText(self.project_name)
@@ -23,11 +23,13 @@ class NewProject(QtWidgets.QDialog):
             self.ui.buttonBox.accepted.connect(self.create_project)
 
     def create_project(self):
+        # Creates a new project.
         project_name = self.ui.lineEdit.text()
         if len(project_name) > 0 and project_name != " ":
             self.state.add_project(project_name)
 
     def edit_project(self):
+        # Edit/update the name of an existing project.
         old_name = self.project_name
         new_name = self.ui.lineEdit.text()
         self.state.update_project(old_name, new_name)

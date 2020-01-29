@@ -3,7 +3,7 @@ import os
 from PyQt5 import QtWidgets
 from widgets.py_files.dialog_create_data_file import Ui_dialog_create_data_file
 from widgets.py_files.dialog_file_exist import Ui_dialog_file_exist
-from utils import get_project_index, set_data_path
+from utils import set_data_path
 from state import State
 
 class DialogCreateDataFile(QtWidgets.QDialog):
@@ -19,11 +19,13 @@ class DialogCreateDataFile(QtWidgets.QDialog):
         self.setups()
 
     def setups(self):
+        # Setup UI
         self.ui.label_directory_not_selected.hide()
         self.ui.push_btn_directory_selector.clicked.connect(self.open_file_selector)
         self.ui.push_btn_save.clicked.connect(self.create_data_file)
 
     def open_file_selector(self):
+        # Displays a QFileDialog to select a directory
         self.directory = QtWidgets.QFileDialog.getExistingDirectory(
             self,
             "Select a directory",
@@ -33,11 +35,13 @@ class DialogCreateDataFile(QtWidgets.QDialog):
         self.ui.label_selected_directory.setText(self.directory)
 
     def create_empty_data_file(self, filename):
+        # Creates an empty JSON file with a data structure template 
         data = {"projects": []}
         with open(filename, "w+") as f:
             json.dump(data, f)
 
     def override_confirmed(self):
+        # Creates an empty data file overriding an existing one.
         self.create_empty_data_file(self.filename)
         self.state = State(self.filename)
         set_data_path(self.filename)
@@ -45,6 +49,7 @@ class DialogCreateDataFile(QtWidgets.QDialog):
         self.close()
 
     def create_data_file(self):
+        # Creates a new data file.
         self.filename = self.ui.line_edit_filename.text()
         if self.directory is not None:
             self.ui.label_directory_not_selected.hide()
@@ -59,16 +64,3 @@ class DialogCreateDataFile(QtWidgets.QDialog):
                 self.override_confirmed()
         else:
             self.ui.label_directory_not_selected.show()
-
-
-    def create_project(self):
-        #TODO: add validation and error messages
-        project_name = self.ui.lineEdit.text()
-        if len(project_name) > 0 and project_name != " ":
-            print(f"creando projecto {project_name}")
-            self.state.add_project(project_name)
-
-    def edit_project(self):
-        old_name = self.project_name
-        new_name = self.ui.lineEdit.text()
-        self.state.update_project(old_name, new_name)
