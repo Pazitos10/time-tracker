@@ -1,5 +1,4 @@
 from PyQt5.QtCore import QObject, pyqtSignal
-from datetime import datetime
 import time_tracker_cli as tt
 
 class State(QObject):
