@@ -44,7 +44,7 @@ Time tracker is a GUI version of the script called [time-tracker-cli](https://gi
 
 #### TODO
 
- - [ ] Clean and document the code.
+ - [x] Clean and document the code.
  - [ ] Create binary versions.
  - [ ] Redesign logo.
  - [ ] (Optional) replace text in buttons with icons.
