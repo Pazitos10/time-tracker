@@ -1,4 +1,6 @@
-## GUI for time_tracker
+<p align="center">
+  <img height=180 src="readme_assets/logo.png">
+</p>
 
 #### How to use:
 
