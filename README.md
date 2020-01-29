@@ -9,6 +9,7 @@ Time tracker is a GUI version of the script called [time-tracker-cli](https://gi
 #### Dependencies
 
 * `PyQt5`
+* `time-tracker-cli`
 
 #### How to use:
 
