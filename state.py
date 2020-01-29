@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 from datetime import datetime
-from time_tracker import *
+from time_tracker_cli import *
 from utils import get_project_index
 
 class State(QObject):
