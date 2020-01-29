@@ -29,7 +29,7 @@ class SessionsTab(QtWidgets.QWidget):
 
     def toggle_btn_title(self):
         project_name = self.ui.projects_combo_box.currentText()
-        ongoing = self.state.are_there_ongoing_sessions(project_name)
+        ongoing = self.state.has_ongoing_sessions(project_name)
         btn_title = "Stop" if ongoing  else "Start"
         self.ui.push_btn_start_stop.setText(btn_title)
         self.toggle_labels(ongoing)
@@ -43,6 +43,11 @@ class SessionsTab(QtWidgets.QWidget):
 
     def set_last_session_timedelta(self):
         project_name = self.ui.projects_combo_box.currentText()
+        if len(project_name) == 0: # when a task is removed currentText() returns ''
+            self.current_index = 0
+            self.ui.projects_combo_box.setCurrentIndex(self.current_index)
+            project_name = self.ui.projects_combo_box.currentText()
+
         total = self.state.get_total_timedelta(project_name)
         timestamp, ongoing = self.state.get_last_session_timedelta(project_name)
         timestamp, font_size = format_timestamp(str(timestamp))

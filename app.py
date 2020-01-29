@@ -11,7 +11,6 @@ from time_tracker_cli import load_data
 from state import State
 
 class App(QtWidgets.QMainWindow):
-    """docstring for Principal"""
     def __init__(self):
         super(App, self).__init__()
         self.ui = Ui_MainWindow()
@@ -20,6 +19,7 @@ class App(QtWidgets.QMainWindow):
         self.setups()
 
     def setups(self):
+        # Setup UI
         self.ui.tab_widget = QtWidgets.QTabWidget()
         self.ui.verticalLayout.addWidget(self.ui.tab_widget)
         self.ui.action_about.triggered.connect(lambda: open_dialog(Ui_dialog_about))
@@ -32,6 +32,7 @@ class App(QtWidgets.QMainWindow):
         self.update_window_title()
 
     def open_existing_file(self):
+        # Display a QFileDialog to select the data file
         data_path = QtWidgets.QFileDialog.getOpenFileName(
             caption="Select your data file", 
             filter="*.json")[0]
@@ -41,12 +42,14 @@ class App(QtWidgets.QMainWindow):
         self.update_data_path()
 
     def update_data_path(self):
+        # Notify the tabs (children widgets) that the data file has changed.
         self.data_path = get_data_path()
         for tab in self.tabs:
             tab.update_data_path(self.data_path)
         self.update_window_title()
 
     def update_window_title(self):
+        # Changes the window title according to the data file in use.
         settings_path = self.data_path.replace(os.path.expanduser("~"), "~")
         self.setWindowTitle(f"Time Tracker ({settings_path})")
 
