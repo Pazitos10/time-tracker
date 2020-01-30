@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from PyQt5 import QtWidgets
 from widgets.py_files.widget_projects_tab import Ui_widget_projects_tab
 from widgets.py_files.list_item_widget import Ui_list_item_widget

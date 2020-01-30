@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import os
 from PyQt5 import QtWidgets
 from widgets.py_files.main import Ui_MainWindow

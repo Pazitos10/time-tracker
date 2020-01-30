@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from PyQt5.QtCore import QObject, pyqtSignal
 import time_tracker_cli as tt
 

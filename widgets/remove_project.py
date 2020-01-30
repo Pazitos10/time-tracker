@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from PyQt5 import QtWidgets
 from widgets.py_files.dialog_remove_project import Ui_dialog_remove_project
 from state import State

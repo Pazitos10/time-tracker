@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from PyQt5 import QtWidgets
 from widgets.py_files.widget_sessions_tab import Ui_widget_sessions_tab
 from utils import format_timestamp

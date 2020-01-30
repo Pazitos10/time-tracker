@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from PyQt5 import QtWidgets
 from widgets.py_files.dialog_new_project import Ui_dialog_new_project
 from state import State
