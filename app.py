@@ -16,6 +16,7 @@ class App(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.data_path = get_data_path()
+        self.tabs = []
         self.setups()
 
     def setups(self):
@@ -25,12 +26,14 @@ class App(QtWidgets.QMainWindow):
         self.ui.action_about.triggered.connect(lambda: open_dialog(Ui_dialog_about))
         self.ui.action_new.triggered.connect(lambda: DialogCreateDataFile(parent=self).exec())
         self.ui.action_open.triggered.connect(self.open_existing_file)
+        if not os.path.exists(self.data_path):
+            DialogCreateDataFile(parent=self).exec()
         self.tabs = [ProjectsTab(self), SessionsTab(self)]
         self.ui.tab_widget.addTab(self.tabs[0], "Projects")
         self.ui.tab_widget.addTab(self.tabs[1], "Sessions")
         self.ui.tab_widget.currentChanged.connect(lambda: self.ui.tab_widget.currentWidget().tab_changed())
         self.update_window_title()
-
+    
     def open_existing_file(self):
         # Display a QFileDialog to select the data file
         data_path = QtWidgets.QFileDialog.getOpenFileName(
