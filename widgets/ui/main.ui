@@ -11,12 +11,18 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
+   <size>
+    <width>662</width>
+    <height>392</height>
+   </size>
+  </property>
+  <property name="maximumSize">
    <size>
     <width>662</width>
     <height>392</height>
@@ -51,6 +57,8 @@
     </property>
     <addaction name="action_new"/>
     <addaction name="action_open"/>
+    <addaction name="action_close"/>
+    <addaction name="action_exit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -62,18 +70,58 @@
    <addaction name="menuHelp"/>
   </widget>
   <action name="action_about">
+   <property name="icon">
+    <iconset theme="help"/>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
   </action>
   <action name="action_new">
+   <property name="icon">
+    <iconset theme="document-new"/>
+   </property>
    <property name="text">
     <string>New</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="action_open">
+   <property name="icon">
+    <iconset theme="document-open"/>
+   </property>
    <property name="text">
     <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_close">
+   <property name="icon">
+    <iconset theme="document-close"/>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="action_exit">
+   <property name="icon">
+    <iconset theme="application-exit"/>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>

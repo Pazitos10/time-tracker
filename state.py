@@ -59,8 +59,9 @@ class State(QObject):
 
         def notify_update(self):
             # Notifies data changes to every state listener
-            for l in self.listeners:
-                l.update_data(self.data)
+            if len(self.data_path) > 0:
+                for l in self.listeners:
+                    l.update_data(self.data)
 
         # time-tracker wrapper methods
         def has_ongoing_sessions(self, project_name):

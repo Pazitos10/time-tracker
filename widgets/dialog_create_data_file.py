@@ -3,7 +3,7 @@
 
 import json
 import os
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from widgets.py_files.dialog_create_data_file import Ui_dialog_create_data_file
 from widgets.py_files.dialog_file_exist import Ui_dialog_file_exist
 from utils import set_data_path
@@ -23,6 +23,8 @@ class DialogCreateDataFile(QtWidgets.QDialog):
 
     def setups(self):
         # Setup UI
+        self.setWindowFlags(self.windowFlags() | QtCore.Qt.CustomizeWindowHint)
+        #self.toggle_close_button_state()
         self.ui.label_directory_not_selected.hide()
         self.ui.push_btn_directory_selector.clicked.connect(self.open_file_selector)
         self.ui.push_btn_save.clicked.connect(self.create_data_file)
@@ -35,7 +37,8 @@ class DialogCreateDataFile(QtWidgets.QDialog):
             os.path.expanduser("~"),
             QtWidgets.QFileDialog.ShowDirsOnly
         )
-        self.ui.label_selected_directory.setText(self.directory)
+        if len(self.directory) > 0:
+            self.ui.label_selected_directory.setText(self.directory)
 
     def create_empty_data_file(self, filename):
         # Creates an empty JSON file with a data structure template 
@@ -56,6 +59,7 @@ class DialogCreateDataFile(QtWidgets.QDialog):
         self.filename = self.ui.line_edit_filename.text()
         if self.directory is not None:
             self.ui.label_directory_not_selected.hide()
+            #self.toggle_close_button_state()
             self.filename = f"{self.directory}/{self.filename}.json"
             if os.path.exists(self.filename):
                 dialog_file_exist = QtWidgets.QDialog()
@@ -67,3 +71,9 @@ class DialogCreateDataFile(QtWidgets.QDialog):
                 self.override_confirmed()
         else:
             self.ui.label_directory_not_selected.show()
+
+    def toggle_close_button_state(self):
+        if not self.directory:
+            self.setWindowFlag(QtCore.Qt.WindowCloseButtonHint, False)
+        else:
+            self.setWindowFlag(QtCore.Qt.WindowCloseButtonHint, True)
