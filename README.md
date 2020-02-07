@@ -16,7 +16,8 @@ Time tracker is a GUI version of the script called [time-tracker-cli](https://gi
 1) Create your data file or open an existing one.
 
 <p align="center">
-  <img src="readme_assets/0.png">
+  <img src="readme_assets/0_1.png">
+  <img src="readme_assets/0_2.png">
 </p>
 
 2) Create projects/tasks you want to work on. Once created, every task is marked as started.
