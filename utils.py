@@ -4,8 +4,10 @@
 import os
 import json
 from PyQt5 import QtWidgets
+from appdirs import *
 
-SETTINGS_PATH = f"{os.path.dirname(__file__)}/settings.json"
+appname = "time-tracker"
+SETTINGS_PATH = f"{user_config_dir(appname)}/settings.json"
 
 def open_dialog(ui_dialog):
     # Generic function to display a QDialog.
