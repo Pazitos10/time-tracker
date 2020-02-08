@@ -20,7 +20,7 @@ def read_json(path):
 
 def get_data_path():
     # Reads the settings file to get the data file path
-    path = "settings.json"
+    path = "./settings.json"
     if os.path.exists(path):
         settings = read_json(path)
         if "data_path" in settings.keys():
@@ -32,8 +32,7 @@ def get_data_path():
 
 def reset_data_path():
     set_data_path("")
-    settings = read_json(path)
-    return settings.get("data_path") 
+    return ""
 
 def is_valid_file(path):
     if os.path.exists(path):
