@@ -26,11 +26,14 @@ def get_data_path():
         if "data_path" in settings.keys():
             return settings.get("data_path") 
         else:
-            return ""
+            return reset_data_path()
     else:
-        set_data_path(path)
-        settings = read_json(path)
-        return settings.get("data_path") 
+        return reset_data_path()
+
+def reset_data_path():
+    set_data_path("")
+    settings = read_json(path)
+    return settings.get("data_path") 
 
 def is_valid_file(path):
     if os.path.exists(path):
