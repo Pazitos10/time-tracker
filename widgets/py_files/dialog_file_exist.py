@@ -13,12 +13,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_dialog_file_exist(object):
     def setupUi(self, dialog_file_exist):
         dialog_file_exist.setObjectName("dialog_file_exist")
-        dialog_file_exist.resize(392, 139)
+        dialog_file_exist.resize(392, 118)
         self.verticalLayout = QtWidgets.QVBoxLayout(dialog_file_exist)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(dialog_file_exist)
-        self.label.setTextFormat(QtCore.Qt.MarkdownText)
-        self.label.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.label.setTextFormat(QtCore.Qt.PlainText)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setWordWrap(True)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
@@ -37,7 +37,7 @@ class Ui_dialog_file_exist(object):
     def retranslateUi(self, dialog_file_exist):
         _translate = QtCore.QCoreApplication.translate
         dialog_file_exist.setWindowTitle(_translate("dialog_file_exist", "File already exist"))
-        self.label.setText(_translate("dialog_file_exist", "A file with the same name **already exist** in that directory. \n"
+        self.label.setText(_translate("dialog_file_exist", "A file with the same name already exist in that directory. \n"
 " Click \"OK\" to override"))
 
 

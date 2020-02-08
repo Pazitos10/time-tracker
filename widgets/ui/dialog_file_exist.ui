@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>392</width>
-    <height>139</height>
+    <height>118</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,14 +17,14 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>A file with the same name **already exist** in that directory. 
+      <string>A file with the same name already exist in that directory. 
  Click &quot;OK&quot; to override</string>
      </property>
      <property name="textFormat">
-      <enum>Qt::MarkdownText</enum>
+      <enum>Qt::PlainText</enum>
      </property>
      <property name="alignment">
-      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+      <set>Qt::AlignCenter</set>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

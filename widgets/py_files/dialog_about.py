@@ -42,7 +42,7 @@ class Ui_dialog_about(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.app_repo_url.sizePolicy().hasHeightForWidth())
         self.app_repo_url.setSizePolicy(sizePolicy)
-        self.app_repo_url.setTextFormat(QtCore.Qt.MarkdownText)
+        self.app_repo_url.setTextFormat(QtCore.Qt.AutoText)
         self.app_repo_url.setScaledContents(False)
         self.app_repo_url.setAlignment(QtCore.Qt.AlignCenter)
         self.app_repo_url.setWordWrap(False)
