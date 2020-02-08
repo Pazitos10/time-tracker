@@ -5,6 +5,8 @@ import os
 import json
 from PyQt5 import QtWidgets
 
+SETTINGS_PATH = f"{os.path.dirname(__file__)}/settings.json"
+
 def open_dialog(ui_dialog):
     # Generic function to display a QDialog.
     dialog = QtWidgets.QDialog()
@@ -20,19 +22,12 @@ def read_json(path):
 
 def get_data_path():
     # Reads the settings file to get the data file path
-    path = "./settings.json"
-    if os.path.exists(path):
-        settings = read_json(path)
-        if "data_path" in settings.keys():
-            return settings.get("data_path") 
-        else:
-            return reset_data_path()
+    settings = read_json(SETTINGS_PATH)
+    if "data_path" in settings.keys():
+        return settings.get("data_path") 
     else:
-        return reset_data_path()
-
-def reset_data_path():
-    set_data_path("")
-    return ""
+        set_data_path("") # resets data_path to ""
+        return ""
 
 def is_valid_file(path):
     if os.path.exists(path):
@@ -44,7 +39,7 @@ def is_valid_file(path):
 def set_data_path(path):
     # Writes the settings file with a new data file path
     settings = {"data_path": path}
-    with open("settings.json", "w+") as f:
+    with open(SETTINGS_PATH, "w+") as f:
         json.dump(settings, f)
 
 def format_timestamp(timestamp):
