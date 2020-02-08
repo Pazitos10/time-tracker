@@ -1,6 +1,6 @@
 __pycache__/
 logo.svg
-*.json
+data.json
 build/
 dist/
 *.spec
