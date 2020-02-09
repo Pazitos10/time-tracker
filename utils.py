@@ -7,7 +7,10 @@ from PyQt5 import QtWidgets
 from appdirs import *
 
 appname = "time-tracker"
-SETTINGS_PATH = f"{user_config_dir(appname)}/settings.json"
+USER_CONFIG_DIR = user_config_dir(appname)
+SETTINGS_PATH = f"{USER_CONFIG_DIR}/settings.json"
+PROJECT_TEMPLATE={"projects": []}
+SETTINGS_TEMPLATE={"data_path": ""}
 
 def open_dialog(ui_dialog):
     # Generic function to display a QDialog.
@@ -17,10 +20,19 @@ def open_dialog(ui_dialog):
     dialog.exec()
 
 def read_json(path):
-    f = open(path, "r")
-    content = json.loads(f.read())
-    f.close()
-    return content
+    try:
+        f = open(path, "r")
+        content = json.loads(f.read())
+        f.close()
+        return content
+    except FileNotFoundError:
+        os.makedirs(USER_CONFIG_DIR, exist_ok=True)
+        open(path, "r").close()
+        if "settings.json" in path:
+            return SETTINGS_TEMPLATE
+        else:
+            return PROJECT_TEMPLATE
+
 
 def get_data_path():
     # Reads the settings file to get the data file path
