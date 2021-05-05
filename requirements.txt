@@ -1,0 +1,6 @@
+appdirs==1.4.3
+PyQt5==5.15.4
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.8.1
+time-tracker-cli==0.0.1
+toml==0.9.6
