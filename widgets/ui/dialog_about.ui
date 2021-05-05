@@ -80,7 +80,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>https://github.com/Pazitos10/time_tracker_gui</string>
+      <string>https://github.com/Pazitos10/time-tracker</string>
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
