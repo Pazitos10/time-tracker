@@ -4,11 +4,9 @@
 import os
 import json
 from PyQt5 import QtWidgets
-from appdirs import *
 
 appname = "time-tracker"
-USER_CONFIG_DIR = user_config_dir(appname)
-SETTINGS_PATH = f"{USER_CONFIG_DIR}/settings.json"
+SETTINGS_PATH = f"./settings.json"
 PROJECT_TEMPLATE={"projects": []}
 SETTINGS_TEMPLATE={"data_path": ""}
 
