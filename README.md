@@ -11,7 +11,11 @@ Time tracker is a GUI version of the script called [time-tracker-cli](https://gi
 * `PyQt5`
 * `time-tracker-cli`
 
+Install them via: `pip install -r requirements.txt`
+
 #### How to use:
+
+The binary version is not available yet but you can run it manually anyway: `python app.py`
 
 1) Create your data file or open an existing one.
 
