@@ -66,8 +66,16 @@
     </property>
     <addaction name="action_about"/>
    </widget>
+   <widget class="QMenu" name="menuReport">
+    <property name="title">
+     <string>Report</string>
+    </property>
+    <addaction name="actionProjects_Chart"/>
+    <addaction name="actionTime_Series_Chart"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
+   <addaction name="menuReport"/>
   </widget>
   <action name="action_about">
    <property name="icon">
@@ -122,6 +130,16 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionProjects_Chart">
+   <property name="text">
+    <string>Projects Chart</string>
+   </property>
+  </action>
+  <action name="actionTime_Series_Chart">
+   <property name="text">
+    <string>Time-Series Chart</string>
    </property>
   </action>
  </widget>
