@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import os
+
 from PyQt5 import QtWidgets
+
 from widgets.py_files.main import Ui_MainWindow
 from widgets.projects_tab import ProjectsTab
 from widgets.sessions_tab import SessionsTab
@@ -10,6 +12,7 @@ from widgets.py_files.dialog_about import Ui_dialog_about
 from widgets.py_files.widget_options_menu import Ui_widget_options_menu
 from widgets.dialog_create_data_file import DialogCreateDataFile
 from utils import open_dialog, get_data_path, set_data_path, is_valid_file
+
 
 class App(QtWidgets.QMainWindow):
     def __init__(self):
@@ -106,6 +109,7 @@ class App(QtWidgets.QMainWindow):
 
     def close_app(self):
         sys.exit()
+
 
 if __name__ == "__main__":
     import sys
