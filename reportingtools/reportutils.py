@@ -1,6 +1,20 @@
+"""
+Functions for generating reports from app data.
+
+Command-line Arguments:
+
+    If run using the command-line, takes app data json file as an argument and generates plots.
+
+Functions:
+
+    fix_times(DataFrame) -> DataFrame
+    dataframe_from_json(file) -> DataFrame, List of DataFrames
+    plot_project_bar(DataFrame)
+    plot_timeseries_bar(List of DataFrames, string)
+    read_arguments() -> Namespace
+"""
 import json
 import argparse
-import os
 
 import pandas as pd
 import plotly.express as px
@@ -44,7 +58,7 @@ def plot_project_bar(df):
     fig.show()
 
  
-def plot_chrono_bar(projects, frequency):
+def plot_timeseries_bar(projects, frequency):
     """Generates a bar chart which shows a breakdown of daily work done."""
 
     resampled_projects = []
@@ -74,7 +88,7 @@ def main():
     args = read_arguments()
     df, projects = dataframe_from_json(args.datafile)
     plot_project_bar(df)
-    plot_chrono_bar(projects, 'D')
+    plot_timeseries_bar(projects, 'D')
 
 
 if __name__ == "__main__":
