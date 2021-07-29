@@ -66,7 +66,7 @@ def plot_timeseries_bar(projects, frequency):
         temp_df = project
         temp_df = fix_times(temp_df)
         resampled_temp_df = temp_df.resample(frequency, on='start').sum().reset_index()
-        resampled_temp_df['Project'] = temp_df['Project']
+        resampled_temp_df['Project'] = temp_df['Project'][0]
         resampled_temp_df.rename(columns={'start':"Date"}, inplace=True)
         resampled_projects.append(resampled_temp_df)
 
