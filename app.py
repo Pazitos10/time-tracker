@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import os
+
 from PyQt5 import QtWidgets
+
 from widgets.py_files.main import Ui_MainWindow
 from widgets.projects_tab import ProjectsTab
 from widgets.sessions_tab import SessionsTab
@@ -10,6 +12,8 @@ from widgets.py_files.dialog_about import Ui_dialog_about
 from widgets.py_files.widget_options_menu import Ui_widget_options_menu
 from widgets.dialog_create_data_file import DialogCreateDataFile
 from utils import open_dialog, get_data_path, set_data_path, is_valid_file
+from reportingtools import reportutils
+
 
 class App(QtWidgets.QMainWindow):
     def __init__(self):
@@ -29,6 +33,8 @@ class App(QtWidgets.QMainWindow):
         self.ui.action_open.triggered.connect(self.open_existing_file)
         self.ui.action_close.triggered.connect(self.close_current_file)
         self.ui.action_exit.triggered.connect(self.close_app)
+        self.ui.actionProjects_Chart.triggered.connect(self.make_projects_chart)
+        self.ui.actionTime_Series_Chart.triggered.connect(self.make_timeseries_chart)
         if self.data_path == "" or not os.path.exists(self.data_path):
             self.setup_options_menu()
             self.ui.action_close.setEnabled(False)
@@ -104,8 +110,24 @@ class App(QtWidgets.QMainWindow):
         set_data_path(self.data_path)
         #self.update_data_path()
 
+    def make_projects_chart(self):
+        """Creates a chart displaying the work done on each project. Automatically opens a browser window containing the chart."""
+        df, _ = reportutils.dataframe_from_json(self.data_path)
+        reportutils.plot_project_bar(df)
+
+    def make_timeseries_chart(self):
+        """
+        Creates a chart displaying the work done over time. Automatically opens a browser window containing the chart.
+
+        Default time frequency used is daily.
+        Future plan: Provide a selector to daily/weekly/monthly/quarterly views.
+        """
+        _, projects = reportutils.dataframe_from_json(self.data_path)
+        reportutils.plot_timeseries_bar(projects, 'D')
+
     def close_app(self):
         sys.exit()
+
 
 if __name__ == "__main__":
     import sys
