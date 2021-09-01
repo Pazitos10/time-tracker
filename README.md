@@ -10,6 +10,8 @@ Time tracker is a GUI version of the script called [time-tracker-cli](https://gi
 
 * `PyQt5`
 * `time-tracker-cli`
+* `Pandas`
+* `Plotly`
 
 Install them via: `pip install -r requirements.txt`
 
@@ -46,7 +48,22 @@ The binary version is not available yet but you can run it manually anyway: `pyt
   <img src="readme_assets/4.png">
 </p>
 
-5) Data is stored in a JSON file.
+5) Data is stored in a JSON file. <br><br>
+
+6) View a visual report of "Work done per project" by clicking on `Report>Projects Chart` from the Menu Bar. The chart is displayed on your default browser.
+
+<img align="center" src="readme_assets/fig1.svg" width="100%">
+
+7) View a visual report of "Daily Work Done" by clicking on `Report>Time-Series Chart` from the Menu Bar. The chart is displayed on your default browser. Show/hide projects on the chart by clicking once on its legend entry. Isolate/deisolate projects on the chart by double-clicking on its legend entry.
+
+<img align="center" src="readme_assets/fig2.svg" width="100%">
+
+8) Interact with the reports and export them:
+   - Plots can be exported as png.
+   - Plots can be panned and zoomed.
+   - Plots have tooltips on mouse hover. Try hovering over different bars on the plot to reveal additional info.
+   - For more info regarding functionality of the plots see [Plotly](https://plotly.com/python/) documentation.
+<br><br>
 
 #### TODO
 

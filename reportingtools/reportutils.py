@@ -13,6 +13,8 @@ Functions:
     plot_timeseries_bar(List of DataFrames, string)
     read_arguments() -> Namespace
 """
+
+
 import json
 import argparse
 
