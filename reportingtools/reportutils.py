@@ -34,9 +34,9 @@ def fix_times(df):
     """Converts start and end columns to datetime format and adds an 'Hours_Worked' column
     containing a Timedelta of each session."""
     df = df.assign(
-        start = pd.to_datetime(df['start'], dayfirst=True),
-        end = pd.to_datetime(df['end'], dayfirst=True),
-        Hours_Worked = lambda x: (x.end - x.start) / pd.Timedelta(hours=1)
+        start=pd.to_datetime(df['start'], dayfirst=True),
+        end=pd.to_datetime(df['end'], dayfirst=True),
+        Hours_Worked=lambda x: (x.end - x.start) / pd.Timedelta(hours=1)
         )
     return df
 
@@ -49,7 +49,7 @@ def dataframe_from_json(filepath):
     for index, project in enumerate(data['projects']):
         temp_df = (
             pd.DataFrame(project['sessions'])
-            .assign(Project = project['project_name'])
+            .assign(Project=project['project_name'])
         )
         projects.append(temp_df)
     df = (
@@ -78,7 +78,7 @@ def plot_timeseries_bar(projects, frequency):
             project.pipe(fix_times)
             .resample(frequency, on='start').sum().reset_index()
             .rename(columns={'start':"Date"})
-            .assign(Project = project['Project'][0])
+            .assign(Project=project['Project'][0])
         )
         resampled_projects.append(temp_df)
     resampled_df = pd.concat(resampled_projects)
@@ -86,7 +86,7 @@ def plot_timeseries_bar(projects, frequency):
         px.bar(resampled_df, x='Date', y='Hours_Worked', color="Project", title='Daily Work')
         .show()
     )
-    
+
 
 def read_arguments():
     """Defines the command-line arguments for this script and fetches those arguments"""
